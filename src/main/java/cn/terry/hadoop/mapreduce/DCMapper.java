@@ -16,10 +16,11 @@ public class DCMapper extends MapReduceBase
 	implements Mapper<LongWritable,Text,Text,DataBean>{
 
 	public void map(LongWritable key, Text value,
-			OutputCollector<Text, IntWritable> output, Reporter reporter)
+			OutputCollector<Text, DataBean> output, Reporter reporter)
 			throws IOException {
 		
 	}
+
 
 
 }
