@@ -1,4 +1,4 @@
-package cn.terry.hadoop.mapreduce;
+package cn.terry.hadoop.mapreduce.dc;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
