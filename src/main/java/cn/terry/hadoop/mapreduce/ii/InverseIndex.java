@@ -70,7 +70,7 @@ public class InverseIndex {
 			
 			//设定path+出现次数 为value
 			v.set(path + "->" + counter);
-			context.write(v, v);
+			context.write(k, v);
 		}
 	}
 
