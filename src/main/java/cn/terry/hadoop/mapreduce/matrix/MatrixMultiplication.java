@@ -16,9 +16,13 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class MatrixMultiplication {
+	
+	private static Logger logger=LoggerFactory.getLogger(MatrixMultiplication.class); 
 	
 	public static void main(String[] args) throws Exception {
 		//设置个性的conf
@@ -72,6 +76,7 @@ public class MatrixMultiplication {
 				throws IOException, InterruptedException {
 				String[] tokens = value.toString().split(",");
 				if (flag.equals("m1.txt")) {
+					logger.info(new String("执行m1.txt的mapper".getBytes(),"utf-8"));
 	                for (int i = 1; i <= rowNum; i++) {
 	                    Text k = new Text(rowIndexA + "," + i);
 	                    for (int j = 1; j <= tokens.length; j++) {
@@ -85,6 +90,7 @@ public class MatrixMultiplication {
 	                
 	                
 				} else if (flag.equals("m2.txt")) {
+					logger.info(new String("执行m2.txt的mapper".getBytes(),"utf-8"));
 	                for (int i = 1; i <= tokens.length; i++) {
 	                    for (int j = 1; j <= colNum; j++) {
 	                        Text k = new Text(i + "," + j);
@@ -108,7 +114,7 @@ public class MatrixMultiplication {
 				throws IOException, InterruptedException {
 			Map<String, String> mapA = new HashMap<String, String>();
             Map<String, String> mapB = new HashMap<String, String>();
-
+            logger.info(new String("执行的reducer".getBytes(),"utf-8"));
             System.out.print(key.toString() + ":");
 
             for (Text line : values) {
